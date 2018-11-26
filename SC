@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+    float change;
+    int coin = 0, rounded = 0;
+    
+
+
+    //Will continuously prompt user for a valid dollar amount
+    do
+    {
+        printf("Change owed: ");
+        change = get_float();
+    }
+    while (change < 0);
+    
+    //convert number to cents; prints to test the outcome
+    rounded = round(change * 100);
+
+    //Divides the change into respective coins eg.  25 cents - 1 cent
+    while (rounded >= 25)
+    {
+        rounded = rounded - 25;
+        coin++;
+    }
+    
+    while (rounded >= 10)
+    {
+        rounded = rounded - 10;
+        coin++;
+    }
+   
+    while (rounded >= 5)
+    {
+        rounded = rounded - 5;
+        coin++;
+    }
+    
+    while (rounded >= 1)
+    {
+        rounded = rounded - 1;
+        coin++;
+    }
+    
+    
+    printf("%i\n", coin);
+    //printf("%i\n", rounded);
+    //printf("%0.02f\n", change);
+}
